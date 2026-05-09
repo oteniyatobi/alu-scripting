@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-puts STDIN.read.scan(/School/).join
+puts ARGV[0].scan(/School/).join
