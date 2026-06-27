@@ -11,13 +11,13 @@ def count_words(subreddit, word_list, counts=None, after=None):
             w = word.lower()
             if w not in counts:
                 counts[w] = 0
-    url = "https://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
-    headers = {"User-Agent": "python3:api.advanced:v1.0 (by /u/api_advanced)"}
-    params = {}
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    headers = {"User-Agent": "linux:alu.api.advanced:v1.0 (by /u/oteniyatobi)"}
+    params = {"limit": 100}
     if after:
         params["after"] = after
-    response = requests.get(url, headers=headers, allow_redirects=False,
-                            params=params)
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
     if response.status_code != 200:
         return
     data = response.json().get("data", {})

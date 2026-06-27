@@ -7,13 +7,13 @@ def recurse(subreddit, hot_list=None, after=None):
     """Return list of all hot article titles for subreddit, or None."""
     if hot_list is None:
         hot_list = []
-    url = "https://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
-    headers = {"User-Agent": "python3:api.advanced:v1.0 (by /u/api_advanced)"}
-    params = {}
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    headers = {"User-Agent": "linux:alu.api.advanced:v1.0 (by /u/oteniyatobi)"}
+    params = {"limit": 100}
     if after:
         params["after"] = after
-    response = requests.get(url, headers=headers, allow_redirects=False,
-                            params=params)
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
     if response.status_code != 200:
         return None
     data = response.json().get("data", {})
